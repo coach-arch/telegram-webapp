@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Questionnaires</title>
-  <!-- Load Telegram Web App JS SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body { font-family: sans-serif; padding: 16px; color: var(--tg-theme-text-color, #000); background: var(--tg-theme-bg-color, #fff); }
@@ -26,7 +25,11 @@
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand(); // Opens full view inside Telegram
+    tg.expand();
+
+    // 1. Extract page_id from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageId = urlParams.get('page_id') || null;
 
     function submitSelection() {
       const selected = [];
@@ -39,8 +42,11 @@
         return;
       }
 
-      // Sends JSON payload back to Telegram client
-      tg.sendData(JSON.stringify({ selected_questionnaires: selected }));
+      // 2. Include page_id in payload sent back to Telegram/n8n
+      tg.sendData(JSON.stringify({ 
+        page_id: pageId,
+        selected_questionnaires: selected 
+      }));
     }
   </script>
 </body>
