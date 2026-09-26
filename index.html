@@ -7,32 +7,47 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       padding: 16px;
       color: var(--tg-theme-text-color, #000000);
       background: var(--tg-theme-bg-color, #ffffff);
     }
 
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .options-container {
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
     .option {
-      display: block;
+      display: flex;
+      align-items: center;
       margin-bottom: 12px;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
+      line-height: 1.3;
     }
 
     input[type="checkbox"] {
-      transform: scale(1.3);
-      margin-right: 10px;
+      transform: scale(1.2);
+      margin-right: 12px;
+      flex-shrink: 0;
     }
 
     button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       background: var(--tg-theme-button-color, #2481cc);
       color: var(--tg-theme-button-text-color, #ffffff);
       border: none;
       border-radius: 8px;
       font-size: 16px;
+      font-weight: 600;
       margin-top: 16px;
       cursor: pointer;
     }
@@ -47,25 +62,38 @@
 
   <h3>Select Questionnaires to Send:</h3>
 
-  <label class="option">
-    <input type="checkbox" value="Emotions Based Update"> Emotions Based Update
-  </label>
-  
-  <label class="option">
-    <input type="checkbox" value="Forum Guidelines"> Forum Guidelines
-  </label>
-  
-  <label class="option">
-    <input type="checkbox" value="Presentation Prep Form"> Presentation Prep Form
-  </label>
-  
-  <label class="option">
-    <input type="checkbox" value="Typical Forum Meeting Agenda"> Typical Forum Meeting Agenda
-  </label>
-  
-  <label class="option">
-    <input type="checkbox" value="WHAT Coaching Questions"> WHAT Coaching Questions
-  </label>
+  <div class="options-container">
+    <label class="option"><input type="checkbox" value="“Letting Go” Process Journaling.pdf"> “Letting Go” Process Journaling.pdf</label>
+    <label class="option"><input type="checkbox" value="“Manage Your Energy Not Your Time” Assessment.docx.pdf"> “Manage Your Energy Not Your Time” Assessment.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="4A_s- To Maintain Vulnerabilty, Trust and Productive Conflict.docx.pdf"> 4A_s- To Maintain Vulnerabilty, Trust and Productive Conflict.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Above The Line- Drama Triangle (1).pdf"> Above The Line- Drama Triangle (1).pdf</label>
+    <label class="option"><input type="checkbox" value="Coach vs. The “Fixer”.pptx.pdf"> Coach vs. The “Fixer”.pptx.pdf</label>
+    <label class="option"><input type="checkbox" value="Direct Conversations.docx.pdf"> Direct Conversations.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Emotions Based Update w. Cont Round.docx.pdf"> Emotions Based Update w. Cont Round.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Facilitated Creativity.docx.pdf"> Facilitated Creativity.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Fear Setting"> Fear Setting</label>
+    <label class="option"><input type="checkbox" value="Fly on the Wall Exploration_ (1).pdf"> Fly on the Wall Exploration_ (1).pdf</label>
+    <label class="option"><input type="checkbox" value="Forum Best Practices.docx.pdf"> Forum Best Practices.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Forum Guidelines.docx.pdf"> Forum Guidelines.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="From Fluid to Crystallized Intelligence"> From Fluid to Crystallized Intelligence</label>
+    <label class="option"><input type="checkbox" value="Guidelines For Creating Psychological Safety On Teams.docx.pdf"> Guidelines For Creating Psychological Safety On Teams.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Ideal Creative Zone.pdf"> Ideal Creative Zone.pdf</label>
+    <label class="option"><input type="checkbox" value="Identity_Shift_Worksheet"> Identity_Shift_Worksheet</label>
+    <label class="option"><input type="checkbox" value="Incompetence to Genius_ Shifting into Your Highest and Best Use"> Incompetence to Genius_ Shifting into Your Highest and Best Use</label>
+    <label class="option"><input type="checkbox" value="Offsite_ “Get to Know You” Dinner"> Offsite_ “Get to Know You” Dinner</label>
+    <label class="option"><input type="checkbox" value="Older Wiser Self"> Older Wiser Self</label>
+    <label class="option"><input type="checkbox" value="Origin Story - Excercise"> Origin Story - Excercise</label>
+    <label class="option"><input type="checkbox" value="Owning My Issue_ Unpack & Act"> Owning My Issue_ Unpack & Act</label>
+    <label class="option"><input type="checkbox" value="Presentation Prep Form"> Presentation Prep Form</label>
+    <label class="option"><input type="checkbox" value="Psychological Safety Guidelines For Teams"> Psychological Safety Guidelines For Teams</label>
+    <label class="option"><input type="checkbox" value="Sample Forum Norms_2021.pdf"> Sample Forum Norms_2021.pdf</label>
+    <label class="option"><input type="checkbox" value="Simple High Lows Update"> Simple High Lows Update</label>
+    <label class="option"><input type="checkbox" value="Simple Update w. Cont Round"> Simple Update w. Cont Round</label>
+    <label class="option"><input type="checkbox" value="Template_ Opportunity Filter"> Template_ Opportunity Filter</label>
+    <label class="option"><input type="checkbox" value="Typical Forum Meeting Agenda"> Typical Forum Meeting Agenda</label>
+    <label class="option"><input type="checkbox" value="WHAT Coaching Questions.docx.pdf"> WHAT Coaching Questions.docx.pdf</label>
+    <label class="option"><input type="checkbox" value="Whole Life Audit 2"> Whole Life Audit 2</label>
+  </div>
 
   <button type="button" onclick="submitSelection()">Confirm & Send</button>
 
@@ -76,7 +104,6 @@
       tg.expand();
     }
 
-    // PASTE YOUR N8N WEBHOOK URL HERE
     const N8N_WEBHOOK_URL = "https://adamsses.app.n8n.cloud/webhook/bc29aa4a-2078-486d-85a7-af74f0977a10";
 
     async function submitSelection() {
